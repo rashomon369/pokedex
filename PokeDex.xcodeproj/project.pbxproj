@@ -20,6 +20,8 @@
 		C9AD4F2A1E0DE0EF004EBCB8 /* pokemon.csv in Resources */ = {isa = PBXBuildFile; fileRef = C9AD4F291E0DE0EF004EBCB8 /* pokemon.csv */; };
 		C9AD4F2D1E0DE554004EBCB8 /* PokemonHollow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9AD4F2B1E0DE554004EBCB8 /* PokemonHollow.ttf */; };
 		C9AD4F2E1E0DE554004EBCB8 /* PokemonSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9AD4F2C1E0DE554004EBCB8 /* PokemonSolid.ttf */; };
+		C9AD4F341E0DE81C004EBCB8 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9AD4F321E0DE81C004EBCB8 /* music.mp3 */; };
+		C9AD4F351E0DE81C004EBCB8 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AD4F331E0DE81C004EBCB8 /* music.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		C9AD4F291E0DE0EF004EBCB8 /* pokemon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pokemon.csv; sourceTree = "<group>"; };
 		C9AD4F2B1E0DE554004EBCB8 /* PokemonHollow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonHollow.ttf; sourceTree = "<group>"; };
 		C9AD4F2C1E0DE554004EBCB8 /* PokemonSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonSolid.ttf; sourceTree = "<group>"; };
+		C9AD4F321E0DE81C004EBCB8 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		C9AD4F331E0DE81C004EBCB8 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 		C9AD4F301E0DE576004EBCB8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9AD4F321E0DE81C004EBCB8 /* music.mp3 */,
+				C9AD4F331E0DE81C004EBCB8 /* music.png */,
 				C9AD4F291E0DE0EF004EBCB8 /* pokemon.csv */,
 				C9AD4F2B1E0DE554004EBCB8 /* PokemonHollow.ttf */,
 				C9AD4F2C1E0DE554004EBCB8 /* PokemonSolid.ttf */,
@@ -298,6 +304,8 @@
 				C9AD4F2D1E0DE554004EBCB8 /* PokemonHollow.ttf in Resources */,
 				C9AD4F2E1E0DE554004EBCB8 /* PokemonSolid.ttf in Resources */,
 				C9AD4F2A1E0DE0EF004EBCB8 /* pokemon.csv in Resources */,
+				C9AD4F351E0DE81C004EBCB8 /* music.png in Resources */,
+				C9AD4F341E0DE81C004EBCB8 /* music.mp3 in Resources */,
 				C9AD4EF71E0DA787004EBCB8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
