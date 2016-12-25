@@ -22,6 +22,9 @@ class Pokemon
     private var _pokeType: String!
     private var _nextEvo: String!
     private var _pokemonURL: String!
+    private var _evoName: String!
+    private var _evoLVL: String!
+    private var _evoNum: String!
     
     //private var _currentImage:
     
@@ -40,6 +43,31 @@ class Pokemon
         
     
         return _pokeDexID
+    }
+    
+    var evoNum: String {
+        
+        if _evoNum == nil {
+            _evoNum = ""
+        }
+        
+        return _evoNum
+    }
+    
+    var evoName: String {
+        
+        if _evoName == nil {
+            _evoName = ""
+        }
+        return _evoName
+    }
+    
+    var evoLVL: String {
+        
+        if _evoLVL == nil {
+            _evoLVL = ""
+        }
+        return _evoLVL
     }
     
     var pokeType: String {
@@ -84,6 +112,13 @@ class Pokemon
         return _baseAttack
     }
     
+    var description: String {
+        
+        if _description == nil {
+            _description = ""
+        }
+        return _description
+    }
     
     
     init(name: String, pokeDexID: Int)
@@ -101,6 +136,57 @@ class Pokemon
            
             
             if let dict = response.result.value as? Dictionary <String, AnyObject>{
+                
+                if let evolution = dict["evolutions"] as? [Dictionary <String, AnyObject>]{
+                    
+                    if !evolution.isEmpty {
+                        
+                    if let evoName = evolution[0]["to"] as? String {
+                        
+                        self._evoName = evoName
+                       
+                    }
+                    else {
+                        self._evoName = ""
+                    }
+                 
+                    if let evoLVL = evolution[0]["level"] as? Int {
+                        
+                        self._evoLVL = "\(evoLVL)"
+                        
+                    }
+                    else {
+                        self._evoLVL = ""
+                    }
+                        
+                    }
+
+ 
+                }
+                
+                
+                if let descriptions = dict["descriptions"] as? [Dictionary<String, AnyObject>]{
+                    
+                    if let RESOURCE_URL = descriptions[0]["resource_uri"]
+                    {
+                        let DESCRIPTIONS_URL = "\(URL_BASE)\(RESOURCE_URL)"
+                        
+                        let evoNum = RESOURCE_URL.components(separatedBy: "/")
+                        
+                            self._evoNum = evoNum[evoNum.endIndex-2]
+                        
+                        Alamofire.request(DESCRIPTIONS_URL).responseJSON { response in
+                            
+                            if let innerAPI = response.result.value as? Dictionary <String, AnyObject> {
+                                
+                                if let description = innerAPI["description"] as? String {
+                                    
+                                    self._description = description
+                                }
+                            }
+                            completed()
+                        }
+                }
                 
                 if let attack = dict["attack"] as? Int{
                     
@@ -121,19 +207,29 @@ class Pokemon
                     self._weight = weight
                 }
                 
-                if let types = dict["types"] as? [Dictionary <String, String>] {
+                if let types = dict["types"] as? [Dictionary <String, String>] , types.count > 0{
                     
+                
                     if let type = types[0]["name"] {
                         
                         self._pokeType = type
                     }
+                    
+                    if types.count > 1 {
+                        
+                        for x in 1..<types.count {
+                            
+                            if let name = types[x]["name"]{
+                                
+                                self._pokeType! += "/\(name.capitalized)"
+                                
+                            }
+                        }
+                        
+                    }
+                    
                 }
-                
-                print(self._baseAttack)
-                print(self._weight)
-                print(self._height)
-                print(self._pokeType)
-                print(self._defense)
+          
                 
             }
             
@@ -142,5 +238,5 @@ class Pokemon
             }
         
         }
-    
+    }
 }
